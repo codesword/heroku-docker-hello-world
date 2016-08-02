@@ -19,4 +19,4 @@ deployment:
     branch: test
     commands:
       - make deploy:
-        pwd: $GOPATH/src/$IMPORT_PATH
+          pwd: $GOPATH/src/$IMPORT_PATH
