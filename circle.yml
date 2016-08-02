@@ -11,14 +11,12 @@ checkout:
     - mv -r $HOME/$CIRCLE_PROJECT_REPONAME/* $GOPATH/src/$IMPORT_PATH
 test:
   override:
-    - go test
-        pwd:
-          $GOPATH/src/$IMPORT_PATH
+    - go test"
+        pwd: $GOPATH/src/$IMPORT_PATH
 
 deployment:
   prod:
-    branch: master
+    branch: test
     commands:
-      - make deploy
-        pwd:
-          $GOPATH/src/$IMPORT_PATH
+      - make deploy:
+        pwd: $GOPATH/src/$IMPORT_PATH
