@@ -5,6 +5,9 @@ machine:
     GOPATH: /home/ubuntu/.go_workspace
     IMPORT_PATH: github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
 
+general:
+  build_dir: $GOPATH/src/$IMPORT_PATH
+
 checkout:
   post:
     - mkdir -p "$GOPATH/src/$IMPORT_PATH"
