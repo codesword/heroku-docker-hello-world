@@ -8,7 +8,7 @@ machine:
 checkout:
   post:
     - mkdir -p "$GOPATH/src/$IMPORT_PATH"
-    - mv $HOME/$CIRCLE_PROJECT_REPONAME $GOPATH/src/$IMPORT_PATH
+    - cp -r $HOME/$CIRCLE_PROJECT_REPONAME/* $GOPATH/src/$IMPORT_PATH
 
 dependencies:
   override:
