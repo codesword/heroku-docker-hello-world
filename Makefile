@@ -10,7 +10,7 @@ setup:
 build:
 	CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o artifact .
 
-image: build setup
+image: build
 	docker build -t registry.heroku.com/$(APP_NAME)/$(PROCESS_TYPE) .
 
 push: image
