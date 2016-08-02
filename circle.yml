@@ -15,8 +15,8 @@ checkout:
 
 dependencies:
   override:
-    - echo "Skip dependencies. Normally you would use godep restore at this point"
-    
+    - echo "Skip go get. Normally you would use godep restore at this point or use vendored dependencies"
+
 test:
   override:
     - go test
@@ -25,4 +25,5 @@ deployment:
   prod:
     branch: test
     commands:
+      - make setup
       - make deploy
