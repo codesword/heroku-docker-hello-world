@@ -8,15 +8,17 @@ machine:
 checkout:
   post:
     - mkdir -p "$GOPATH/src/$IMPORT_PATH"
-    - cp -r $HOME/$CIRCLE_PROJECT_REPONAME/* $GOPATH/src/$IMPORT_PATH
+    - mv -r $HOME/$CIRCLE_PROJECT_REPONAME/* $GOPATH/src/$IMPORT_PATH
 test:
   override:
     - go test
-        pwd: $GOPATH/src/$IMPORT_PATH
+        pwd:
+          $GOPATH/src/$IMPORT_PATH
 
 deployment:
   prod:
     branch: master
     commands:
       - make deploy
-          pwd: $GOPATH/src/$IMPORT_PATH
+        pwd:
+          $GOPATH/src/$IMPORT_PATH
