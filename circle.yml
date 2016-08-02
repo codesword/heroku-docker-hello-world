@@ -5,6 +5,9 @@ machine:
     GOPATH: /home/ubuntu/.go_workspace
     IMPORT_PATH: github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
 
+general:
+  build_dir: ../.go_workspace/src/$IMPORT_PATH
+
 checkout:
   post:
     - mkdir -p "$GOPATH/src/$IMPORT_PATH"
@@ -13,14 +16,13 @@ checkout:
 dependencies:
   override:
     - echo "Skip dependencies. Normally you would use godep restore at this point"
+    
 test:
   override:
-    - go test:
-        pwd: $GOPATH/src/$IMPORT_PATH
+    - go test
 
 deployment:
   prod:
     branch: test
     commands:
-      - make deploy:
-          pwd: $GOPATH/src/$IMPORT_PATH
+      - make deploy
