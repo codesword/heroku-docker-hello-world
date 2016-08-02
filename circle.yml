@@ -17,8 +17,12 @@ dependencies:
   override:
     - echo "Skip go get. Normally you would use godep restore at this point or use vendored dependencies"
 
+test:
+  override:
+    - go test
+
 deployment:
   prod:
-    branch: test
+    branch: master
     commands:
       - make push
