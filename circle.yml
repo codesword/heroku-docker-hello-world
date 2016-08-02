@@ -25,5 +25,4 @@ deployment:
   prod:
     branch: test
     commands:
-      - make setup
-      - make deploy
+      - make push

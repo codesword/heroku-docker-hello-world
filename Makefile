@@ -14,6 +14,7 @@ image: build
 	docker build -t registry.heroku.com/$(APP_NAME)/$(PROCESS_TYPE) .
 
 push: image
+	docker login --email=_ --username=_ --password=$(shell heroku auth:token) registry.heroku.com
 	docker push registry.heroku.com/$(APP_NAME)/$(PROCESS_TYPE)
 
 deploy: build
