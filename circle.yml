@@ -5,13 +5,14 @@ machine:
     GOPATH: /home/ubuntu/.go_workspace
     IMPORT_PATH: github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
 
-general:
-  build_dir: $GOPATH/src/$IMPORT_PATH
-
 checkout:
   post:
     - mkdir -p "$GOPATH/src/$IMPORT_PATH"
     - mv $HOME/$CIRCLE_PROJECT_REPONAME $GOPATH/src/$IMPORT_PATH
+
+dependencies:
+  override:
+    - echo "Skip dependencies. Normally you would use godep restore at this point"
 test:
   override:
     - go test:
