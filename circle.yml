@@ -1,0 +1,22 @@
+machine:
+  services:
+    - docker
+  environment:
+    GOPATH: /home/ubuntu/.go_workspace
+    IMPORT_PATH: github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
+
+checkout:
+  post:
+    - mkdir -p "$GOPATH/src/$IMPORT_PATH"
+    - cp -r $HOME/$CIRCLE_PROJECT_REPONAME/* $GOPATH/src/$IMPORT_PATH
+test:
+  override:
+    - go test
+        pwd: $GOPATH/src/$IMPORT_PATH
+
+deployment:
+  prod:
+    branch: master
+    commands:
+      - make deploy
+          pwd: $GOPATH/src/$IMPORT_PATH
