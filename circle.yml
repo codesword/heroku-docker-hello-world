@@ -11,7 +11,7 @@ checkout:
     - mv -r $HOME/$CIRCLE_PROJECT_REPONAME/* $GOPATH/src/$IMPORT_PATH
 test:
   override:
-    - go test"
+    - go test:
         pwd: $GOPATH/src/$IMPORT_PATH
 
 deployment:
