@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.4
 
 # Install bash, It's needed by heroku
 RUN apk add --update bash
