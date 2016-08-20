@@ -13,6 +13,10 @@ checkout:
     - mkdir -p "$GOPATH/src/$IMPORT_PATH"
     - rsync -azC --delete $HOME/$CIRCLE_PROJECT_REPONAME/ $GOPATH/src/$IMPORT_PATH/
 
+test:
+  override:
+    - go test
+    
 dependencies:
   override:
     - echo "Skip go get. Normally you would use godep restore at this point or use vendored dependencies"
